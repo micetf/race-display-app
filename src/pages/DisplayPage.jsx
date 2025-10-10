@@ -1,8 +1,9 @@
 import { useState, useCallback } from "react";
 import { useBroadcastChannel } from "../hooks/useBroadcastChannel";
+import { useAudioPlayer } from "../hooks/useAudioPlayer";
 import ImageDisplay from "../components/ImageDisplay";
 import RaceDisplay from "../components/RaceDisplay";
-import MusicPlayer from "../components/MusicPlayer";
+import MusicCredit from "../components/MusicCredit";
 import Clock from "../components/Clock";
 
 function DisplayPage() {
@@ -27,11 +28,22 @@ function DisplayPage() {
 
     useBroadcastChannel("race-display", handleMessage);
 
+    // 🎯 NOUVEAU : Utiliser le hook pour gérer l'audio
+    const { isPlaying, currentMusic } = useAudioPlayer(musicControl);
+
     return (
         <div className="w-screen h-screen bg-black flex items-center justify-center overflow-hidden">
             <Clock />
-            {/* Lecteur de musique (position fixe) */}
-            <MusicPlayer musicControl={musicControl} />
+
+            {/* 🎯 NOUVEAU : Affichage des crédits en mode "floating" 
+                Uniquement quand une musique joue ET qu'on affiche une image */}
+            {content.type === "image" && (
+                <MusicCredit
+                    music={currentMusic}
+                    isPlaying={isPlaying}
+                    variant="floating"
+                />
+            )}
 
             {/* Contenu principal */}
             <div
@@ -57,7 +69,13 @@ function DisplayPage() {
                     <ImageDisplay url={content.data.url} />
                 )}
 
-                {content.type === "race" && <RaceDisplay data={content.data} />}
+                {content.type === "race" && (
+                    <RaceDisplay
+                        data={content.data}
+                        currentMusic={currentMusic}
+                        isPlaying={isPlaying}
+                    />
+                )}
             </div>
         </div>
     );

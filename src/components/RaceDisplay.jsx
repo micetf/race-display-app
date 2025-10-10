@@ -5,8 +5,12 @@ import DisplayHeader from "./DisplayHeader";
 import StatusBar from "./StatusBar";
 import MusicCredit from "./MusicCredit";
 
-function RaceDisplay({ data }) {
-    const { currentRace, nextRace, podiumCourse, podium, music } = data;
+/**
+ * 🎯 NOUVEAU : Accepte maintenant currentMusic et isPlaying
+ * au lieu de récupérer music depuis data
+ */
+function RaceDisplay({ data, currentMusic, isPlaying }) {
+    const { currentRace, nextRace, podiumCourse, podium } = data;
 
     // Par défaut, si podiumCourse n'est pas défini, utiliser currentRace
     const displayPodiumCourse = podiumCourse || currentRace;
@@ -50,9 +54,14 @@ function RaceDisplay({ data }) {
                     </div>
                 </div>
 
-                {/* Footer avec StatusBar et éventuellement MusicCredit */}
-                <div className="mt-2">
-                    {music && <MusicCredit music={music} />}
+                {/* Footer avec StatusBar et crédit musique inline */}
+                <div className="mt-2 space-y-2">
+                    {/* 🎯 NOUVEAU : Utilisation du composant unifié en mode "inline" */}
+                    <MusicCredit
+                        music={currentMusic}
+                        isPlaying={isPlaying}
+                        variant="inline"
+                    />
                     <StatusBar />
                 </div>
             </div>
