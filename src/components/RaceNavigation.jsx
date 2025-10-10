@@ -133,7 +133,7 @@ function RaceNavigation({
             )}
 
             {/* Prochain départ */}
-            {nextCourse && (
+            {/* {nextCourse && (
                 <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
                     <div className="flex items-center justify-between">
                         <div>
@@ -167,7 +167,7 @@ function RaceNavigation({
                         </div>
                     </div>
                 </div>
-            )}
+            )} */}
         </div>
     );
 }
