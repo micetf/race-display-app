@@ -6,31 +6,42 @@ function RaceDisplay({ data }) {
     // Par défaut, si podiumCourse n'est pas défini, utiliser currentRace
     const displayPodiumCourse = podiumCourse || currentRace;
 
-    const RaceCard = ({ title, race, icon, accentColor }) => {
-        const IconComponent = icon;
-        return (
-            <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-5 shadow-2xl border-2 border-gray-700 hover:border-gray-600 transition-all h-full flex flex-col">
-                <div className="flex items-center gap-3 mb-3">
+    const RaceCard = ({
+        title,
+        race,
+        icon: Icon,
+        accentColor,
+        isEmpty = false,
+    }) => (
+        <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-5 shadow-2xl border-2 border-gray-700 hover:border-gray-600 transition-all h-full flex flex-col">
+            <div className="flex items-center gap-3 mb-3">
+                <div
+                    className="w-1.5 h-10 rounded-full shadow-lg"
+                    style={{ backgroundColor: race.color }}
+                ></div>
+                <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                        <Icon
+                            className={`w-5 h-5 ${accentColor} flex-shrink-0`}
+                        />
+                        <h2 className="text-lg font-bold text-gray-300 uppercase tracking-wide truncate">
+                            {title}
+                        </h2>
+                    </div>
                     <div
-                        className="w-1.5 h-10 rounded-full shadow-lg"
+                        className="h-0.5 w-16 rounded-full"
                         style={{ backgroundColor: race.color }}
                     ></div>
-                    <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2 mb-1">
-                            <IconComponent
-                                className={`w-5 h-5 ${accentColor} flex-shrink-0`}
-                            />
-                            <h2 className="text-lg font-bold text-gray-300 uppercase tracking-wide truncate">
-                                {title}
-                            </h2>
-                        </div>
-                        <div
-                            className="h-0.5 w-16 rounded-full"
-                            style={{ backgroundColor: race.color }}
-                        ></div>
-                    </div>
                 </div>
+            </div>
 
+            {isEmpty ? (
+                <div className="flex-1 flex items-center justify-center">
+                    <p className="text-gray-500 text-center italic">
+                        Aucune course
+                    </p>
+                </div>
+            ) : (
                 <div className="grid grid-cols-2 gap-3">
                     <div className="flex items-start gap-2">
                         <Trophy className="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
@@ -86,9 +97,9 @@ function RaceDisplay({ data }) {
                         </div>
                     </div>
                 </div>
-            </div>
-        );
-    };
+            )}
+        </div>
+    );
 
     return (
         <div className="h-full bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-6 flex flex-col">
@@ -117,6 +128,7 @@ function RaceDisplay({ data }) {
                                 race={currentRace}
                                 icon={Flag}
                                 accentColor="text-green-400"
+                                isEmpty={currentRace.category === "-"}
                             />
                         </div>
 
@@ -126,6 +138,7 @@ function RaceDisplay({ data }) {
                                 race={nextRace}
                                 icon={Clock}
                                 accentColor="text-orange-400"
+                                isEmpty={nextRace.category === "-"}
                             />
                         </div>
                     </div>
