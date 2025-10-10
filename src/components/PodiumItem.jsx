@@ -1,4 +1,5 @@
 import { getMedalStyle } from "../utils/medalStyles";
+import SchoolBadge from "./SchoolBadge";
 
 function PodiumItem({ item }) {
     const medal = getMedalStyle(item.position);
@@ -22,6 +23,11 @@ function PodiumItem({ item }) {
                     >
                         {item.time || "-"}
                     </p>
+                    {item.school && (
+                        <div className="mt-1">
+                            <SchoolBadge schoolId={item.school} compact />
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

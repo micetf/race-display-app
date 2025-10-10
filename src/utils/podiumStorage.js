@@ -58,11 +58,11 @@ export const resetAllPodiums = () => {
     localStorage.removeItem(STORAGE_KEY);
 };
 
-// Podium par défaut
+// Podium par défaut avec le champ école
 export const getDefaultPodium = () => [
-    { position: "1", name: "", time: "" },
-    { position: "2", name: "", time: "" },
-    { position: "3", name: "", time: "" },
-    { position: "4", name: "", time: "" },
-    { position: "5", name: "", time: "" },
+    { position: "1", name: "", time: "", school: "" },
+    { position: "2", name: "", time: "", school: "" },
+    { position: "3", name: "", time: "", school: "" },
+    { position: "4", name: "", time: "", school: "" },
+    { position: "5", name: "", time: "", school: "" },
 ];

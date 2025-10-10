@@ -142,7 +142,7 @@ function ControlPage() {
         const nextPosition = String(parseInt(lastPosition) + 1);
         const newPodium = [
             ...podium,
-            { position: nextPosition, name: "", time: "" },
+            { position: nextPosition, name: "", time: "", school: "" },
         ];
         setPodium(newPodium);
         savePodium(coursesAllIds[podiumCourseIndex], newPodium);
@@ -352,12 +352,13 @@ function ControlPage() {
                             4. Sélectionnez la course du podium et remplissez
                             les résultats
                         </li>
+                        <li>5. Sélectionnez l'école de chaque participant</li>
                         <li>
-                            5. Cliquez sur "Mettre à jour l'affichage" pour
+                            6. Cliquez sur "Mettre à jour l'affichage" pour
                             synchroniser
                         </li>
                         <li>
-                            6. 💾 Les podiums sont sauvegardés automatiquement
+                            7. 💾 Les podiums sont sauvegardés automatiquement
                             (même après F5)
                         </li>
                     </ul>
