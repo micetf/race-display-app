@@ -82,7 +82,7 @@ function RaceNavigation({
                         </p>
                     </div>
                     <div className="bg-white rounded-lg p-3">
-                        <p className="text-gray-600">Couleur</p>
+                        <p className="text-gray-600">Dossards</p>
                         <div className="flex items-center gap-2">
                             <div
                                 className="w-4 h-4 rounded border border-gray-300"
