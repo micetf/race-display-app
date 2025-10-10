@@ -98,23 +98,64 @@ function MusicPlayer({ musicControl }) {
     if (!isPlaying || !currentMusic) return null;
 
     return (
-        <div className="fixed bottom-4 left-4 bg-gray-900/90 backdrop-blur border-2 border-purple-500/50 rounded-xl p-3 shadow-2xl max-w-xs z-50">
-            <div className="flex items-center gap-3">
+        <div className="fixed bottom-4 left-4 bg-gray-900/95 backdrop-blur border-2 border-purple-500/50 rounded-xl p-4 shadow-2xl max-w-lg z-50">
+            <div className="flex items-start gap-3">
                 <div className="relative">
                     <Music className="w-8 h-8 text-purple-400 animate-pulse" />
                     <div className="absolute inset-0 animate-ping">
                         <Music className="w-8 h-8 text-purple-400 opacity-75" />
                     </div>
                 </div>
-                <div className="flex-1 min-w-0">
-                    <p className="text-white font-semibold text-sm truncate">
-                        {currentMusic.titre}
-                    </p>
-                    <p className="text-gray-400 text-xs truncate">
-                        {currentMusic.auteur}
-                    </p>
+                <div className="flex-1 min-w-0 space-y-2">
+                    <div className="flex items-center gap-2">
+                        <div className="flex-1 min-w-0">
+                            <p className="text-white font-semibold text-sm truncate">
+                                Titre : {currentMusic.titre}
+                            </p>
+                            <p className="text-gray-400 text-xs truncate">
+                                Auteur : {currentMusic.auteur}
+                            </p>
+                        </div>
+                        <Volume2 className="w-5 h-5 text-purple-400 flex-shrink-0" />
+                    </div>
+
+                    {/* Crédit complet */}
+                    <div className="text-[10px] text-gray-400 leading-relaxed space-y-0.5 border-t border-gray-700/50 pt-2">
+                        <div>
+                            <span className="font-medium">Source:</span>{" "}
+                            <a
+                                href={currentMusic.source}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-blue-400 hover:text-blue-300 underline"
+                            >
+                                {currentMusic.source}
+                            </a>
+                        </div>
+                        <div>
+                            <span className="font-medium">Licence:</span>{" "}
+                            <a
+                                href={currentMusic.licence}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-blue-400 hover:text-blue-300 underline"
+                            >
+                                {currentMusic.licence}
+                            </a>{" "}
+                        </div>
+                        <div>
+                            <span className="font-medium">Téléchargement:</span>{" "}
+                            <a
+                                href={currentMusic.telechargement}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-blue-400 hover:text-blue-300 underline"
+                            >
+                                {currentMusic.telechargement}
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <Volume2 className="w-5 h-5 text-purple-400 flex-shrink-0" />
             </div>
         </div>
     );

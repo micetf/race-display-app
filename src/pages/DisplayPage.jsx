@@ -3,6 +3,7 @@ import { useBroadcastChannel } from "../hooks/useBroadcastChannel";
 import ImageDisplay from "../components/ImageDisplay";
 import RaceDisplay from "../components/RaceDisplay";
 import MusicPlayer from "../components/MusicPlayer";
+import Clock from "../components/Clock";
 
 function DisplayPage() {
     const [content, setContent] = useState({
@@ -28,6 +29,7 @@ function DisplayPage() {
 
     return (
         <div className="w-screen h-screen bg-black flex items-center justify-center overflow-hidden">
+            <Clock />
             {/* Lecteur de musique (position fixe) */}
             <MusicPlayer musicControl={musicControl} />
 

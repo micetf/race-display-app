@@ -6,6 +6,7 @@ import RaceNavigation from "../components/RaceNavigation";
 import PodiumForm from "../components/PodiumForm";
 import EventStatus from "../components/EventStatus";
 import { coursesById, coursesAllIds, getCouleurHex } from "../data/courses";
+import { musiquesById } from "../data/musiques";
 import {
     loadPodium,
     savePodium,
@@ -25,7 +26,7 @@ function ControlPage() {
     const [podiumCourseIndex, setPodiumCourseIndex] = useState(-1);
     const [podium, setPodium] = useState(getDefaultPodium());
     const [savedPodimsCount, setSavedPodimsCount] = useState(0);
-
+    const [currentMusic, setCurrentMusic] = useState(null);
     // Charger le podium au changement de course
     useEffect(() => {
         if (
@@ -226,16 +227,27 @@ function ControlPage() {
                 nextRace: nextRaceData,
                 podiumCourse: podiumCourseData,
                 podium: podium,
+                music: currentMusic ? musiquesById[currentMusic] : null,
             },
         });
     };
 
     const handleMusicControl = (musicControl) => {
+        if (musicControl.action === "play" && musicControl.musicId) {
+            setCurrentMusic(musicControl.musicId); // ← Ajouter cette ligne
+        } else if (musicControl.action === "stop") {
+            setCurrentMusic(null); // ← Ajouter cette ligne
+        }
+
         sendMessage({
             type: "music",
             data: musicControl,
         });
         sendMusicControl(musicControl);
+    };
+
+    const handleMusicChange = (musicId) => {
+        setCurrentMusic(musicId);
     };
 
     return (
@@ -402,7 +414,11 @@ function ControlPage() {
 
                     {/* Mode Musique */}
                     {displayMode === "music" && (
-                        <MusicSelector onMusicControl={handleMusicControl} />
+                        <MusicSelector
+                            onMusicChange={handleMusicChange}
+                            onMusicControl={handleMusicControl}
+                            currentMusic={currentMusic}
+                        />
                     )}
                 </div>
 
