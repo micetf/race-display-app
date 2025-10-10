@@ -2,6 +2,7 @@ import { useState, useCallback } from "react";
 import { useBroadcastChannel } from "../hooks/useBroadcastChannel";
 import ImageDisplay from "../components/ImageDisplay";
 import RaceDisplay from "../components/RaceDisplay";
+import MusicPlayer from "../components/MusicPlayer";
 
 function DisplayPage() {
     const [content, setContent] = useState({
@@ -9,15 +10,28 @@ function DisplayPage() {
         data: null,
     });
 
+    const [musicControl, setMusicControl] = useState(null);
+
     const handleMessage = useCallback((message) => {
         console.log("Message reçu:", message);
-        setContent(message);
+
+        // Gérer les messages de musique séparément
+        if (message.type === "music") {
+            setMusicControl(message.data);
+        } else {
+            // Messages d'affichage normaux (image, race)
+            setContent(message);
+        }
     }, []);
 
     useBroadcastChannel("race-display", handleMessage);
 
     return (
         <div className="w-screen h-screen bg-black flex items-center justify-center overflow-hidden">
+            {/* Lecteur de musique (position fixe) */}
+            <MusicPlayer musicControl={musicControl} />
+
+            {/* Contenu principal */}
             <div
                 className="w-full h-full"
                 style={{
