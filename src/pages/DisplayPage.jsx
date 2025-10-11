@@ -7,9 +7,13 @@ import MusicCredit from "../components/MusicCredit";
 import Clock from "../components/Clock";
 
 function DisplayPage() {
-    const [content, setContent] = useState({
-        type: null,
-        data: null,
+    // État composé et persistant
+    const [displayState, setDisplayState] = useState({
+        image: null, // { url: "..." }
+        currentRace: null, // { category, year, distance, color, colorName, startTime }
+        nextRace: null,
+        podiumCourse: null,
+        podium: null, // [{ position, name, time, school }]
     });
 
     const [musicControl, setMusicControl] = useState(null);
@@ -20,24 +24,44 @@ function DisplayPage() {
         // Gérer les messages de musique séparément
         if (message.type === "music") {
             setMusicControl(message.data);
-        } else {
-            // Messages d'affichage normaux (image, race)
-            setContent(message);
+        }
+        // Mise à jour partielle de l'état d'affichage
+        else if (message.type === "update") {
+            setDisplayState((prev) => ({
+                ...prev,
+                ...message.data,
+            }));
+        }
+        // Pour compatibilité avec l'ancien système (si nécessaire)
+        else if (message.type === "image") {
+            setDisplayState((prev) => ({
+                ...prev,
+                image: message.data,
+            }));
+        } else if (message.type === "race") {
+            setDisplayState((prev) => ({
+                ...prev,
+                currentRace: message.data.currentRace,
+                nextRace: message.data.nextRace,
+                podiumCourse: message.data.podiumCourse,
+                podium: message.data.podium,
+            }));
         }
     }, []);
 
     useBroadcastChannel("race-display", handleMessage);
 
-    // 🎯 NOUVEAU : Utiliser le hook pour gérer l'audio
     const { isPlaying, currentMusic } = useAudioPlayer(musicControl);
+
+    // Décider quoi afficher selon l'état
+    const showImage = displayState.image !== null;
 
     return (
         <div className="w-screen h-screen bg-black flex items-center justify-center overflow-hidden">
             <Clock />
 
-            {/* 🎯 NOUVEAU : Affichage des crédits en mode "floating" 
-                Uniquement quand une musique joue ET qu'on affiche une image */}
-            {content.type === "image" && (
+            {/* Crédits musicaux en mode floating (sur l'image) */}
+            {showImage && (
                 <MusicCredit
                     music={currentMusic}
                     isPlaying={isPlaying}
@@ -54,24 +78,18 @@ function DisplayPage() {
                     maxWidth: "177.78vh",
                 }}
             >
-                {!content.type && (
-                    <div className="flex items-center justify-center h-full">
-                        <div className="text-center">
-                            <div className="w-16 h-16 border-4 border-gray-600 border-t-white rounded-full animate-spin mx-auto mb-4"></div>
-                            <p className="text-gray-400 text-xl">
-                                En attente du contenu...
-                            </p>
-                        </div>
-                    </div>
-                )}
+                {/* Affichage de l'image */}
+                {showImage && <ImageDisplay url={displayState.image.url} />}
 
-                {content.type === "image" && (
-                    <ImageDisplay url={content.data.url} />
-                )}
-
-                {content.type === "race" && (
+                {/* Affichage des informations de course et podium (quand l'image n'est pas affichée) */}
+                {!showImage && (
                     <RaceDisplay
-                        data={content.data}
+                        data={{
+                            currentRace: displayState.currentRace,
+                            nextRace: displayState.nextRace,
+                            podiumCourse: displayState.podiumCourse,
+                            podium: displayState.podium || [],
+                        }}
                         currentMusic={currentMusic}
                         isPlaying={isPlaying}
                     />
