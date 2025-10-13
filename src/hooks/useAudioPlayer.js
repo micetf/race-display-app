@@ -34,7 +34,7 @@ export const useAudioPlayer = (musicControl) => {
             }
 
             // Créer une nouvelle instance Audio
-            const audioPath = `/musiques/${music.file}.mp3`;
+            const audioPath = `${import.meta.env.BASE_URL}musiques/${music.file}.mp3`;
             console.log("Chemin audio:", audioPath);
 
             const audio = new Audio(audioPath);

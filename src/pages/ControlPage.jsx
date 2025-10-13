@@ -20,7 +20,7 @@ function ControlPage() {
 
     // État du mode d'affichage
     const [displayMode, setDisplayMode] = useState("image");
-    const [imageUrl, setImageUrl] = useState("/cross-annonay.jpg");
+    const [imageUrl, setImageUrl] = useState("./cross-annonay.jpg");
     const [imageDisplayed, setImageDisplayed] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(-1);
     const [podiumCourseIndex, setPodiumCourseIndex] = useState(0);
@@ -151,6 +151,8 @@ function ControlPage() {
     };
 
     const handleOpenDisplay = () => {
+        const basename = import.meta.env.BASE_URL || "/";
+        const displayUrl = `${window.location.origin}${basename}#/display`;
         const displayFeatures = [
             "toolbar=no",
             "location=no",
@@ -164,7 +166,7 @@ function ControlPage() {
             "top=0",
         ].join(",");
 
-        window.open("/display", "DisplayWindow", displayFeatures);
+        window.open(displayUrl, "DisplayWindow", displayFeatures);
     };
 
     const handleToggleImage = () => {
