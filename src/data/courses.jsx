@@ -2,7 +2,7 @@
 export const coursesById = {
     course1: {
         id: "course1",
-        depart: "13h10",
+        depart: "13:10",
         categorie: "BG",
         annee: "2013",
         distance: "2500m P3",
@@ -10,7 +10,7 @@ export const coursesById = {
     },
     course2: {
         id: "course2",
-        depart: "13h20",
+        depart: "13:20",
         categorie: "BF",
         annee: "2013",
         distance: "2000m P2",
@@ -18,7 +18,7 @@ export const coursesById = {
     },
     course3: {
         id: "course3",
-        depart: "13h30",
+        depart: "13:30",
         categorie: "BG",
         annee: "2013-2014",
         distance: "2500m P3",
@@ -26,7 +26,7 @@ export const coursesById = {
     },
     course4: {
         id: "course4",
-        depart: "13h40",
+        depart: "13:40",
         categorie: "BF",
         annee: "2013-2014",
         distance: "2000m P2",
@@ -34,7 +34,7 @@ export const coursesById = {
     },
     course5: {
         id: "course5",
-        depart: "13h50",
+        depart: "13:50",
         categorie: "CM2 G",
         annee: "2015",
         distance: "1200m P1",
@@ -42,7 +42,7 @@ export const coursesById = {
     },
     course6: {
         id: "course6",
-        depart: "14h05",
+        depart: "14:05",
         categorie: "CM2 F",
         annee: "2013",
         distance: "1200m P1",
@@ -50,7 +50,7 @@ export const coursesById = {
     },
     course7: {
         id: "course7",
-        depart: "14h20",
+        depart: "14:20",
         categorie: "MG",
         annee: "2012",
         distance: "3000m P4",
@@ -58,7 +58,7 @@ export const coursesById = {
     },
     course8: {
         id: "course8",
-        depart: "14h35",
+        depart: "14:35",
         categorie: "MF",
         annee: "2012",
         distance: "2500m P3",
@@ -66,7 +66,7 @@ export const coursesById = {
     },
     course9: {
         id: "course9",
-        depart: "14h45",
+        depart: "14:45",
         categorie: "MG",
         annee: "2011",
         distance: "3000m P4",
@@ -74,7 +74,7 @@ export const coursesById = {
     },
     course10: {
         id: "course10",
-        depart: "15h05",
+        depart: "15:05",
         categorie: "MF",
         annee: "2011",
         distance: "2500m P3",
@@ -82,7 +82,7 @@ export const coursesById = {
     },
     course11: {
         id: "course11",
-        depart: "15h20",
+        depart: "15:20",
         categorie: "CF 2 + JF",
         annee: "2009 et avant",
         distance: "3000m P4",
@@ -90,7 +90,7 @@ export const coursesById = {
     },
     course12: {
         id: "course12",
-        depart: "15h35",
+        depart: "15:35",
         categorie: "CG",
         annee: "2010",
         distance: "3000 P4",
@@ -98,7 +98,7 @@ export const coursesById = {
     },
     course13: {
         id: "course13",
-        depart: "15h50",
+        depart: "15:50",
         categorie: "CF",
         annee: "2010",
         distance: "3000m P4",
@@ -106,7 +106,7 @@ export const coursesById = {
     },
     course14: {
         id: "course14",
-        depart: "16h05",
+        depart: "16:05",
         categorie: "CG 2 + JG",
         annee: "2009 et avant",
         distance: "3000 P4",
