@@ -1,5 +1,41 @@
 // Liste des établissements scolaires participants
 export const ecolesById = {
+    fontchevalier: {
+        id: "fontchevalier",
+        nom: "École de Fontchevalier",
+        type: "école primaire",
+        ville: "Annonay",
+    },
+    jeanmoulin: {
+        id: "jeanmoulin",
+        nom: "École de Jean Moulin",
+        type: "école primaire",
+        ville: "Annonay",
+    },
+    cordeliers: {
+        id: "cordeliers",
+        nom: "École des Cordeliers",
+        type: "école primaire",
+        ville: "Annonay",
+    },
+    vangogh: {
+        id: "vangogh",
+        nom: "École Van Gogh",
+        type: "école élémentaire",
+        ville: "Annonay",
+    },
+    canceMalleval: {
+        id: "canceMalleval",
+        nom: "École Cance-Malleval",
+        type: "école primaire",
+        ville: "Annonay",
+    },
+    vissenty: {
+        id: "vissenty",
+        nom: "École Vissenty",
+        type: "école élémentaire",
+        ville: "Annonay",
+    },
     perrieres: {
         id: "perrieres",
         nom: "Collège des Perrières",
@@ -46,42 +82,6 @@ export const ecolesById = {
         id: "boissy",
         nom: "Lycée Boissy d'Anglas",
         type: "lycée",
-        ville: "Annonay",
-    },
-    fontchevalier: {
-        id: "fontchevalier",
-        nom: "École de Fontchevalier",
-        type: "école primaire",
-        ville: "Annonay",
-    },
-    jeanmoulin: {
-        id: "jeanmoulin",
-        nom: "École de Jean Moulin",
-        type: "école primaire",
-        ville: "Annonay",
-    },
-    cordeliers: {
-        id: "cordeliers",
-        nom: "École des Cordeliers",
-        type: "école primaire",
-        ville: "Annonay",
-    },
-    vangogh: {
-        id: "vangogh",
-        nom: "École Van Gogh",
-        type: "école primaire",
-        ville: "Annonay",
-    },
-    vissenty: {
-        id: "vissenty",
-        nom: "École Vissenty",
-        type: "école primaire",
-        ville: "Annonay",
-    },
-    canceMalleval: {
-        id: "canceMalleval",
-        nom: "École Cance-Malleval",
-        type: "école primaire",
         ville: "Annonay",
     },
 };
