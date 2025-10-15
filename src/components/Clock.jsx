@@ -24,10 +24,16 @@ function Clock() {
     };
 
     return (
-        <div className="fixed top-4 left-4 bg-gray-900/95 backdrop-blur border-2 border-blue-500/50 rounded-xl px-6 py-3 shadow-2xl z-50">
-            <div className="flex items-center gap-3">
-                <ClockIcon className="w-6 h-6 text-blue-400" />
-                <span className="text-white font-bold text-2xl tabular-nums">
+        <div
+            className="fixed bg-gray-900/95 backdrop-blur border-blue-500/50 rounded-responsive-xl shadow-2xl z-50 clock-container"
+            style={{
+                top: "2vh",
+                left: "2vw",
+            }}
+        >
+            <div className="flex items-center gap-responsive-md">
+                <ClockIcon className="clock-icon text-blue-400" />
+                <span className="text-white font-bold clock-time tabular-nums">
                     {formatTime(time)}
                 </span>
             </div>

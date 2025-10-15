@@ -2,17 +2,25 @@ import { Flag } from "lucide-react";
 
 function DisplayHeader() {
     return (
-        <div className="text-center mb-2">
-            <div className="inline-block mb-0.5">
-                <Flag className="w-6 h-6 text-blue-500 mx-auto" />
+        <div className="text-center mb-responsive-md">
+            <div className="inline-block mb-responsive-sm">
+                <Flag className="icon-lg text-blue-500 mx-auto" />
             </div>
-            <h1 className="text-2xl font-black text-white tracking-tight leading-tight">
+            <h1 className="text-responsive-2xl font-black text-white tracking-tight leading-tight">
                 CROSS SCOLAIRE D'ANNONAY
             </h1>
-            <p className="text-sm text-gray-400 font-semibold">
+            <p className="text-responsive-md text-gray-400 font-semibold mt-responsive-sm">
                 16 OCTOBRE 2025
             </p>
-            <div className="h-0.5 w-20 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mx-auto rounded-full mt-0.5"></div>
+            <div
+                className="mx-auto rounded-full mt-responsive-sm"
+                style={{
+                    height: "0.3vh",
+                    width: "10vw",
+                    background:
+                        "linear-gradient(to right, rgb(59, 130, 246), rgb(168, 85, 247), rgb(236, 72, 153))",
+                }}
+            ></div>
         </div>
     );
 }

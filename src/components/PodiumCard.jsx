@@ -7,37 +7,46 @@ function PodiumCard({ podiumCourse, podium }) {
     const hasPodium = filledPodium.length > 0;
 
     return (
-        <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-2.5 shadow-2xl border-2 border-amber-500/30 h-full flex flex-col">
-            <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center gap-2">
-                    <Trophy className="w-4 h-4 text-amber-400" />
+        <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-responsive-lg spacing-md shadow-2xl border-responsive-thick border-amber-500/30 h-full flex flex-col">
+            {/* Header du podium */}
+            <div className="flex items-center justify-between mb-responsive-md">
+                <div className="flex items-center gap-responsive-sm">
+                    <Trophy className="icon-md text-amber-400" />
                     <div>
-                        <h2 className="text-sm font-bold text-gray-300 uppercase tracking-wide">
+                        <h2 className="text-responsive-md font-bold text-gray-300 uppercase tracking-wide">
                             Podium
                         </h2>
-                        <div className="h-0.5 w-10 bg-gradient-to-r from-amber-400 to-yellow-500 rounded-full mt-0.5"></div>
+                        <div
+                            className="rounded-full mt-responsive-sm"
+                            style={{
+                                height: "0.3vh",
+                                width: "5vw",
+                                background:
+                                    "linear-gradient(to right, rgb(251, 191, 36), rgb(234, 179, 8))",
+                            }}
+                        ></div>
                     </div>
                 </div>
 
                 {/* Information de la course du podium */}
-                <div className="bg-gray-800/70 rounded-lg px-2.5 py-1 border border-amber-500/20">
-                    <p className="text-amber-400 font-semibold text-xs leading-tight">
+                <div className="bg-gray-800/70 rounded-responsive-md spacing-sm border-responsive-thin border-amber-500/20">
+                    <p className="text-amber-400 font-semibold text-responsive-sm leading-tight">
                         {podiumCourse.category} - {podiumCourse.year}
                     </p>
-                    <p className="text-gray-400 text-[9px] leading-tight mt-0.5">
+                    <p className="text-gray-400 text-responsive-xs leading-tight mt-responsive-sm">
                         {podiumCourse.startTime} • {podiumCourse.distance}
                     </p>
                 </div>
             </div>
 
-            {/* Podium en grille adaptative */}
-            <div className="flex-1 flex items-center justify-center overflow-y-auto">
+            {/* Podium en grille adaptative avec scroll si nécessaire */}
+            <div className="flex-1 flex items-center justify-center overflow-hidden">
                 {hasPodium ? (
                     <div
-                        className={`grid gap-1.5 w-full ${
+                        className={`w-full podium-scrollable ${
                             filledPodium.length <= 6
-                                ? "grid-cols-1"
-                                : "grid-cols-2"
+                                ? "grid gap-responsive-md grid-cols-1"
+                                : "grid gap-responsive-sm grid-cols-2"
                         }`}
                     >
                         {filledPodium.map((item, index) => (
@@ -53,8 +62,13 @@ function PodiumCard({ podiumCourse, podium }) {
                         ))}
                     </div>
                 ) : (
-                    <div className="text-center py-4 text-gray-500 text-sm">
-                        Aucun résultat pour le moment
+                    <div className="text-center spacing-lg text-gray-500">
+                        <div className="text-responsive-2xl mb-responsive-md">
+                            🏆
+                        </div>
+                        <p className="text-responsive-md">
+                            Aucun résultat pour le moment
+                        </p>
                     </div>
                 )}
             </div>

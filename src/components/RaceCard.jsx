@@ -3,76 +3,82 @@ import { Trophy, Clock, Calendar, Route, Shirt } from "lucide-react";
 function RaceCard({ title, race, icon, accentColor, isEmpty = false }) {
     const IconComponent = icon;
 
-    // Utiliser le nom de couleur passé ou le déduire de la couleur hex
     const dossardColorName =
         race.colorName || (race.color === "#ffffff" ? "Blanc" : "Couleur");
 
     return (
-        <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-2.5 shadow-2xl border-2 border-gray-700 hover:border-gray-600 transition-all h-full flex flex-col">
-            <div className="flex items-center gap-2 mb-2">
+        <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-responsive-lg spacing-md shadow-2xl border-responsive-thick border-gray-700 hover:border-gray-600 transition-all h-full flex flex-col">
+            {/* Header avec barre de couleur */}
+            <div className="flex items-center gap-responsive-sm mb-responsive-md">
                 <div
-                    className="w-1 h-6 rounded-full shadow-lg"
+                    className="color-bar rounded-full shadow-lg"
                     style={{ backgroundColor: race.color }}
                 ></div>
                 <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-1.5">
+                    <div className="flex items-center gap-responsive-xs">
                         <IconComponent
-                            className={`w-3.5 h-3.5 ${accentColor} flex-shrink-0`}
+                            className={`icon-sm ${accentColor} flex-shrink-0`}
                         />
-                        <h2 className="text-xs font-bold text-gray-300 uppercase tracking-wide truncate">
+                        <h2 className="text-responsive-sm font-bold text-gray-300 uppercase tracking-wide truncate">
                             {title}
                         </h2>
                     </div>
                     <div
-                        className="h-0.5 w-10 rounded-full mt-0.5"
-                        style={{ backgroundColor: race.color }}
+                        className="h-[0.3vh] rounded-full mt-responsive-sm"
+                        style={{
+                            backgroundColor: race.color,
+                            width: "5vw",
+                        }}
                     ></div>
                 </div>
             </div>
 
             {isEmpty ? (
                 <div className="flex-1 flex items-center justify-center">
-                    <p className="text-gray-500 text-center italic text-xs">
+                    <p className="text-gray-500 text-center italic text-responsive-sm">
                         Aucune course
                     </p>
                 </div>
             ) : (
-                <div className="grid grid-cols-2 gap-2">
-                    <div className="flex items-start gap-1.5">
-                        <Trophy className="w-3 h-3 text-amber-400 mt-0.5 flex-shrink-0" />
+                <div className="grid grid-cols-2 gap-responsive-md">
+                    {/* Catégorie */}
+                    <div className="flex items-start gap-responsive-xs">
+                        <Trophy className="icon-sm text-amber-400 mt-[0.5vh] flex-shrink-0" />
                         <div className="min-w-0 flex-1">
-                            <p className="text-gray-400 text-[9px] uppercase tracking-wide">
+                            <p className="text-gray-400 text-responsive-xs uppercase tracking-wide">
                                 Catégorie
                             </p>
-                            <p className="text-white text-sm font-bold mt-0.5 truncate leading-tight">
+                            <p className="text-white text-responsive-md font-bold mt-responsive-sm truncate leading-tight">
                                 {race.category || "-"}
                             </p>
                         </div>
                     </div>
 
-                    <div className="flex items-start gap-1.5">
-                        <Calendar className="w-3 h-3 text-blue-400 mt-0.5 flex-shrink-0" />
+                    {/* Année */}
+                    <div className="flex items-start gap-responsive-xs">
+                        <Calendar className="icon-sm text-blue-400 mt-[0.5vh] flex-shrink-0" />
                         <div className="min-w-0 flex-1">
-                            <p className="text-gray-400 text-[9px] uppercase tracking-wide">
+                            <p className="text-gray-400 text-responsive-xs uppercase tracking-wide">
                                 Année
                             </p>
-                            <p className="text-white text-xs font-semibold mt-0.5 truncate leading-tight">
+                            <p className="text-white text-responsive-sm font-semibold mt-responsive-sm truncate leading-tight">
                                 {race.year || "-"}
                             </p>
                         </div>
                     </div>
 
-                    <div className="flex items-start gap-1.5">
+                    {/* Départ - TAILLE AUGMENTÉE */}
+                    <div className="flex items-start gap-responsive-xs">
                         <Clock
-                            className="w-3.5 h-3.5 mt-0.5 flex-shrink-0"
+                            className="icon-md mt-[0.5vh] flex-shrink-0"
                             style={{ color: race.color }}
                         />
                         <div className="min-w-0 flex-1">
-                            <p className="text-gray-400 text-[9px] uppercase tracking-wide">
+                            <p className="text-gray-400 text-responsive-xs uppercase tracking-wide">
                                 Départ
                             </p>
                             <p
-                                className="text-white text-base font-bold mt-0.5 tabular-nums truncate leading-tight"
+                                className="text-white text-responsive-lg font-bold mt-responsive-sm tabular-nums truncate leading-tight"
                                 style={{ color: race.color }}
                             >
                                 {race.startTime || "-"}
@@ -80,30 +86,31 @@ function RaceCard({ title, race, icon, accentColor, isEmpty = false }) {
                         </div>
                     </div>
 
-                    <div className="flex items-start gap-1.5">
-                        <Route className="w-3 h-3 text-green-400 mt-0.5 flex-shrink-0" />
+                    {/* Distance */}
+                    <div className="flex items-start gap-responsive-xs">
+                        <Route className="icon-sm text-green-400 mt-[0.5vh] flex-shrink-0" />
                         <div className="min-w-0 flex-1">
-                            <p className="text-gray-400 text-[9px] uppercase tracking-wide">
+                            <p className="text-gray-400 text-responsive-xs uppercase tracking-wide">
                                 Distance
                             </p>
-                            <p className="text-white text-xs font-semibold mt-0.5 truncate leading-tight">
+                            <p className="text-white text-responsive-sm font-semibold mt-responsive-sm truncate leading-tight">
                                 {race.distance || "-"}
                             </p>
                         </div>
                     </div>
 
-                    {/* Section Dossards compacte */}
-                    <div className="col-span-2 flex items-center gap-2 mt-0.5 bg-gray-800/50 rounded-lg p-1.5 border border-gray-700">
+                    {/* Dossards - Section compacte */}
+                    <div className="col-span-2 flex items-center gap-responsive-sm mt-responsive-sm bg-gray-800/50 rounded-responsive-md spacing-sm border-responsive-thin border-gray-700">
                         <Shirt
-                            className="w-3.5 h-3.5 flex-shrink-0"
+                            className="icon-sm flex-shrink-0"
                             style={{ color: race.color }}
                         />
-                        <p className="text-gray-400 text-[9px] uppercase tracking-wide">
+                        <p className="text-gray-400 text-responsive-xs uppercase tracking-wide">
                             Dossards
                         </p>
-                        <div className="flex items-center gap-1.5 ml-auto">
+                        <div className="flex items-center gap-responsive-xs ml-auto">
                             <div
-                                className="w-4 h-4 rounded border-2 flex-shrink-0"
+                                className="dossard-indicator rounded border-responsive-normal flex-shrink-0"
                                 style={{
                                     backgroundColor: race.color,
                                     borderColor:
@@ -112,7 +119,7 @@ function RaceCard({ title, race, icon, accentColor, isEmpty = false }) {
                                             : race.color,
                                 }}
                             ></div>
-                            <p className="text-white font-semibold text-xs truncate">
+                            <p className="text-white font-semibold text-responsive-sm truncate">
                                 {dossardColorName}
                             </p>
                         </div>

@@ -1,3 +1,284 @@
+/* 
+ * Système de tailles relatives pour affichage sur écran géant
+ * À ajouter dans src/index.css APRÈS les directives Tailwind
+ * 
+ * Principe : Toutes les tailles sont calculées en fonction de la taille de l'écran
+ * - Basé sur vw (viewport width) pour une adaptation horizontale
+ * - Utilise vmin pour les icônes (s'adapte au plus petit côté)
+ */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    /* ========================================
+     TYPOGRAPHIE RESPONSIVE
+     Tailles de texte basées sur la largeur d'écran
+     ======================================== */
+
+    /* Très petits textes - Ex: crédits, mentions légales */
+    .text-responsive-xs {
+        font-size: 0.8vw;
+        line-height: 1.4;
+    }
+
+    /* Petits textes - Ex: labels, métadonnées */
+    .text-responsive-sm {
+        font-size: 1vw;
+        line-height: 1.4;
+    }
+
+    /* Texte de base - Ex: noms dans le podium */
+    .text-responsive-base {
+        font-size: 1.4vw;
+        line-height: 1.3;
+    }
+
+    /* Texte moyen - Ex: catégories, années */
+    .text-responsive-md {
+        font-size: 1.8vw;
+        line-height: 1.3;
+    }
+
+    /* Grand texte - Ex: heures de départ */
+    .text-responsive-lg {
+        font-size: 2.5vw;
+        line-height: 1.2;
+        font-weight: 700;
+    }
+
+    /* Très grand texte - Ex: titres principaux */
+    .text-responsive-xl {
+        font-size: 3.5vw;
+        line-height: 1.1;
+        font-weight: 900;
+    }
+
+    /* Texte géant - Ex: header "CROSS SCOLAIRE" */
+    .text-responsive-2xl {
+        font-size: 4.5vw;
+        line-height: 1;
+        font-weight: 900;
+    }
+
+    /* ========================================
+     ESPACEMENTS RESPONSIVE
+     Padding, margin, gap basés sur vh/vw
+     ======================================== */
+
+    .spacing-xs {
+        padding: 0.5vh 0.5vw;
+    }
+    .spacing-sm {
+        padding: 0.8vh 0.8vw;
+    }
+    .spacing-md {
+        padding: 1.2vh 1.2vw;
+    }
+    .spacing-lg {
+        padding: 2vh 2vw;
+    }
+    .spacing-xl {
+        padding: 3vh 3vw;
+    }
+
+    .gap-responsive-xs {
+        gap: 0.5vw;
+    }
+    .gap-responsive-sm {
+        gap: 0.8vw;
+    }
+    .gap-responsive-md {
+        gap: 1.2vw;
+    }
+    .gap-responsive-lg {
+        gap: 2vw;
+    }
+    .gap-responsive-xl {
+        gap: 3vw;
+    }
+
+    .mb-responsive-sm {
+        margin-bottom: 0.8vh;
+    }
+    .mb-responsive-md {
+        margin-bottom: 1.5vh;
+    }
+    .mb-responsive-lg {
+        margin-bottom: 2.5vh;
+    }
+
+    .mt-responsive-sm {
+        margin-top: 0.8vh;
+    }
+    .mt-responsive-md {
+        margin-top: 1.5vh;
+    }
+
+    /* ========================================
+     ICÔNES RESPONSIVE
+     Tailles basées sur vmin (s'adapte au plus petit côté)
+     ======================================== */
+
+    .icon-xs {
+        width: 2vmin;
+        height: 2vmin;
+    }
+    .icon-sm {
+        width: 3vmin;
+        height: 3vmin;
+    }
+    .icon-md {
+        width: 4vmin;
+        height: 4vmin;
+    }
+    .icon-lg {
+        width: 5vmin;
+        height: 5vmin;
+    }
+    .icon-xl {
+        width: 7vmin;
+        height: 7vmin;
+    }
+
+    /* ========================================
+     BORDURES ET ARRONDIS RESPONSIVE
+     ======================================== */
+
+    .rounded-responsive-sm {
+        border-radius: 0.4vw;
+    }
+    .rounded-responsive-md {
+        border-radius: 0.8vw;
+    }
+    .rounded-responsive-lg {
+        border-radius: 1.2vw;
+    }
+    .rounded-responsive-xl {
+        border-radius: 1.8vw;
+    }
+
+    .border-responsive-thin {
+        border-width: 0.1vw;
+    }
+    .border-responsive-normal {
+        border-width: 0.2vw;
+    }
+    .border-responsive-thick {
+        border-width: 0.3vw;
+    }
+
+    /* ========================================
+     ÉLÉMENTS SPÉCIFIQUES
+     ======================================== */
+
+    /* Médailles du podium - Tailles calculées */
+    .medal-circle {
+        min-width: 4vmin;
+        height: 4vmin;
+        font-size: 2vmin;
+    }
+
+    /* Barre de couleur indicative */
+    .color-bar {
+        width: 0.5vw;
+        height: 3vh;
+    }
+
+    /* Indicateur de dossard */
+    .dossard-indicator {
+        width: 2.5vmin;
+        height: 2.5vmin;
+    }
+
+    /* ========================================
+     HORLOGE FIXE RESPONSIVE
+     ======================================== */
+
+    .clock-container {
+        padding: 1.5vh 2vw;
+        border-width: 0.2vw;
+        border-radius: 1vw;
+    }
+
+    .clock-icon {
+        width: 3vmin;
+        height: 3vmin;
+    }
+
+    .clock-time {
+        font-size: 3vw;
+        font-weight: 700;
+    }
+
+    /* ========================================
+     PODIUM SCROLL (si plus de 8 positions)
+     ======================================== */
+
+    .podium-scrollable {
+        max-height: 70vh;
+        overflow-y: auto;
+    }
+
+    /* Scrollbar personnalisée */
+    .podium-scrollable::-webkit-scrollbar {
+        width: 0.5vw;
+    }
+
+    .podium-scrollable::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 0.5vw;
+    }
+
+    .podium-scrollable::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 0.5vw;
+    }
+
+    .podium-scrollable::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.5);
+    }
+}
+
+/* ========================================
+   MEDIA QUERIES - AJUSTEMENTS FINS
+   Pour écrans ultra-larges (> 2560px)
+   ======================================== */
+
+@media (min-width: 2560px) {
+    .text-responsive-base {
+        font-size: 1.2vw; /* Légèrement plus petit sur très grands écrans */
+    }
+
+    .text-responsive-lg {
+        font-size: 2.2vw;
+    }
+
+    .text-responsive-xl {
+        font-size: 3vw;
+    }
+}
+
+/* ========================================
+   OPTIMISATIONS POUR ÉCRANS GÉANTS
+   Améliore la lisibilité à grande distance
+   ======================================== */
+
+@media (min-width: 1920px) {
+    /* Augmente le poids des polices pour la lisibilité */
+    .font-bold {
+        font-weight: 800;
+    }
+
+    .font-semibold {
+        font-weight: 700;
+    }
+
+    /* Améliore les contrastes */
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+    }
+}
