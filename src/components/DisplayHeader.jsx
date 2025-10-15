@@ -1,8 +1,15 @@
 import { Flag } from "lucide-react";
+import Clock from "./Clock";
 
 function DisplayHeader() {
     return (
-        <div className="text-center mb-responsive-md">
+        <div className="text-center mb-responsive-md relative">
+            {/* Horloge intégrée en haut à droite du header */}
+            <div className="absolute" style={{ top: "0", right: "0" }}>
+                <Clock />
+            </div>
+
+            {/* Contenu principal du header */}
             <div className="inline-block mb-responsive-sm">
                 <Flag className="icon-lg text-blue-500 mx-auto" />
             </div>

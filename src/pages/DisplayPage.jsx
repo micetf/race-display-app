@@ -4,7 +4,6 @@ import { useAudioPlayer } from "../hooks/useAudioPlayer";
 import ImageDisplay from "../components/ImageDisplay";
 import RaceDisplay from "../components/RaceDisplay";
 import MusicCredit from "../components/MusicCredit";
-import Clock from "../components/Clock";
 
 function DisplayPage() {
     // État composé et persistant
@@ -58,8 +57,6 @@ function DisplayPage() {
 
     return (
         <div className="w-screen h-screen bg-black flex items-center justify-center overflow-hidden">
-            <Clock />
-
             {/* Crédits musicaux en mode floating (sur l'image) */}
             {showImage && (
                 <MusicCredit
@@ -71,7 +68,7 @@ function DisplayPage() {
 
             {/* Contenu principal */}
             <div
-                className="w-full h-full"
+                className="w-full h-full relative"
                 style={{
                     aspectRatio: "16/9",
                     maxHeight: "100vh",

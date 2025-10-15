@@ -24,13 +24,7 @@ function Clock() {
     };
 
     return (
-        <div
-            className="fixed bg-gray-900/95 backdrop-blur border-blue-500/50 rounded-responsive-xl shadow-2xl z-50 clock-container"
-            style={{
-                top: "2vh",
-                left: "2vw",
-            }}
-        >
+        <div className="bg-gray-900/95 backdrop-blur border-blue-500/50 rounded-responsive-xl shadow-2xl clock-container">
             <div className="flex items-center gap-responsive-md">
                 <ClockIcon className="clock-icon text-blue-400" />
                 <span className="text-white font-bold clock-time tabular-nums">
